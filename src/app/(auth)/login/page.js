@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Eye, EyeOff, KeyRound, Loader2 } from 'lucide-react';
+import { Eye, EyeOff, Loader2 } from 'lucide-react';
+import Logo from '@/components/Logo';
 import { useSuperAdminAuth } from '@/context/SuperAdminAuthContext';
 
 export default function LoginPage() {
@@ -35,9 +36,7 @@ export default function LoginPage() {
   return (
     <div className="login-page">
       <form className="login-card" onSubmit={onSubmit}>
-        <div className="brand" style={{ color: 'var(--text)', padding: 0 }}>
-          <span className="brand-logo"><KeyRound size={18} /></span> PureBook
-        </div>
+        <div className="login-logo"><Logo /></div>
         <div>
           <h2>Super Admin sign in</h2>
           <p className="muted" style={{ margin: '4px 0 0' }}>Platform operations console</p>

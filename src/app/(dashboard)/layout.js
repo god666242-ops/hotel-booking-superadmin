@@ -3,9 +3,10 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Building2, CalendarCheck, KeyRound, LayoutDashboard, LogOut, Menu, ScrollText, Wallet, X } from 'lucide-react';
+import { Building2, CalendarCheck, LayoutDashboard, LogOut, Menu, ScrollText, Wallet, X } from 'lucide-react';
 import { useSuperAdminAuth } from '@/context/SuperAdminAuthContext';
 import { Avatar } from '@/components/ui';
+import Logo from '@/components/Logo';
 
 const nav = [
   { href: '/', label: 'Overview', icon: LayoutDashboard },
@@ -36,7 +37,7 @@ export default function DashboardLayout({ children }) {
     <div className="shell">
       <div className={`scrim ${open ? 'open' : ''}`} onClick={() => setOpen(false)} />
       <aside className={`sidebar ${open ? 'open' : ''}`}>
-        <div className="brand"><span className="brand-logo"><KeyRound size={18} /></span> PureBook Admin</div>
+        <div className="brand"><Link href="/" aria-label="PureBook Super Admin home"><Logo light /></Link><span className="brand-badge">Super Admin</span></div>
         {nav.map(({ href, label, icon: Icon }) => (
           <Link key={href} href={href} className={`nav-link ${isActive(href) ? 'active' : ''}`} aria-current={isActive(href) ? 'page' : undefined}>
             <Icon size={18} /> {label}

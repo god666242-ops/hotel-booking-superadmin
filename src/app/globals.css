@@ -148,3 +148,10 @@ tbody tr:hover { background: #fafbff; } tbody tr:last-child td { border-bottom: 
 .pw { position: relative; } .pw button { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); all: unset; cursor: pointer; color: var(--muted); padding: 4px; }
 .pw input { padding-right: 38px; }
 .spin { animation: spin 1s linear infinite; } @keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- PureBook logo (replaces the old icon + text brand) ---- */
+.brand { flex-direction: column; align-items: flex-start; gap: 10px; padding: 4px 10px 22px; }
+.brand a { display: inline-flex; border-radius: 8px; }
+.brand-img { height: 34px; width: auto; display: block; user-select: none; }
+.brand-badge { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #a5b4fc; background: rgba(99,102,241,.16); border: 1px solid rgba(129,140,248,.28); padding: 3px 9px; border-radius: 999px; }
+.login-logo .brand-img { height: 40px; }
