@@ -87,6 +87,7 @@ function HotelsInner() {
       { label: 'Email', value: (h) => h.email },
       { label: 'Status', value: (h) => h.status },
       { label: 'Commission %', value: (h) => h.commissionPercent },
+      { label: 'Hotel-fault cancellations (30d)', value: (h) => h.hotelFaultCancels30d ?? 0 },
       { label: 'Onboarded', value: (h) => h.createdAt },
     ], list.rows);
 
@@ -122,15 +123,16 @@ function HotelsInner() {
                 <SortTh label="City" field="city" sort={list.sort} onSort={list.onSort} />
                 <SortTh label="Status" field="status" sort={list.sort} onSort={list.onSort} />
                 <SortTh label="Commission" field="commissionPercent" sort={list.sort} onSort={list.onSort} />
+                <th title="Cancellations where the hotel said it could not host the guest (last 30 days)">Hotel-fault cancels (30d)</th>
                 <SortTh label="Onboarded" field="createdAt" sort={list.sort} onSort={list.onSort} />
                 <th className="right">Actions</th>
               </tr>
             </thead>
             <tbody>
               {list.loading && !list.rows.length ? (
-                <TableSkeleton cols={6} />
+                <TableSkeleton cols={7} />
               ) : list.rows.length === 0 ? (
-                <EmptyRow cols={6} title="No hotels found" />
+                <EmptyRow cols={7} title="No hotels found" />
               ) : (
                 list.rows.map((h) => (
                   <tr key={id(h)}>
@@ -147,6 +149,12 @@ function HotelsInner() {
                       {h.paymentMode && (
                         <small className="muted"> · {h.paymentMode === 'HOTEL_GATEWAY' ? 'Own gateway' : 'Pay at hotel'}</small>
                       )}
+                    </td>
+                    <td
+                      title="Cancellations where the hotel said it could not host the guest (last 30 days)"
+                      style={h.hotelFaultCancels30d >= 3 ? { fontWeight: 700, color: '#b45309' } : undefined}
+                    >
+                      {h.hotelFaultCancels30d ?? 0}
                     </td>
                     <td title={h.createdAt}>{fmtDate(h.createdAt)}</td>
                     <td>

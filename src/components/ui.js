@@ -10,6 +10,7 @@ const TONES = {
   PENDING_KYC: 'amber', HELD: 'amber', PROCESSING: 'amber', PENDING: 'amber', QUEUED: 'amber', ON_HOLD: 'amber', READY_FOR_SETTLEMENT: 'blue',
   EXPIRED: 'gray', EXPIRED_REFUNDED: 'gray',
   CHECKED_IN: 'blue',
+  NO_SHOW: 'amber',
   SUSPENDED: 'red', CANCELLED: 'red', FAILED: 'red', REVERSED: 'red', REJECTED: 'red', OVERDUE: 'red',
 };
 
